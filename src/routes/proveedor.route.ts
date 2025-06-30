@@ -77,16 +77,14 @@ route.put("/:id", async (req, res) => {
       res.status(400).json({ error: "El proveedor no existe." });
       return;
     }
-    if (req.body.nombre) proveedor.prov_nombre = req.body.nombre;
+    if (req.body.prov_nombre) proveedor.prov_nombre = req.body.prov_nombre;
     if (req.body.doc_numero) proveedor.doc_numero = req.body.doc_numero;
     if (req.body.doc_tipo) proveedor.doc_tipo = req.body.doc_tipo;
     if (req.body.banco_tipo) proveedor.banco_tipo = req.body.banco_tipo;
     if (req.body.banco_nombre) proveedor.banco_nombre = req.body.banco_nombre;
     if (req.body.banco_numero) proveedor.banco_numero = req.body.banco_numero;
-    if (req.body.contacto_nombre)
-      proveedor.contacto_nombre = req.body.contacto_nombre;
-    if (req.body.contacto_numero)
-      proveedor.contacto_numero = req.body.contacto_numero;
+    if (req.body.contacto_nombre) proveedor.contacto_nombre = req.body.contacto_nombre;
+    if (req.body.contacto_numero) proveedor.contacto_numero = req.body.contacto_numero;
     await proveedor.save();
     res.json(proveedor);
   } catch (error: any) {

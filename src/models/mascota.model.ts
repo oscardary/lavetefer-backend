@@ -1,5 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../config/database';
+import Cliente from './cliente.model';
 
 class Mascota extends Model {
     public id!: number;
@@ -70,6 +71,12 @@ Mascota.init({
     sequelize,
     tableName: "mascotas",
     timestamps: true,
+});
+
+//Aquí se define el componente relacional a otra entidad
+Mascota.belongsTo(Cliente, {
+    foreignKey: 'propietario',
+    as: 'fk_propietario'
 });
 
 export default Mascota;

@@ -1,5 +1,6 @@
 import { Router } from "express";
 import Mascota from "../models/mascota.model";
+import Cliente from "../models/cliente.model";
 //import { proveedorSchema } from "../schemas/proveedor.schema";
 import { Op } from "sequelize";
 
@@ -20,7 +21,15 @@ route.get("/", async (req, res) => {
   }
 
   try {
-    const mascota = await Mascota.findAll({ where });
+    const mascota = await Mascota.findAll({ where,
+      //Aquí luego del WHERE adicionamos la consulta a la otra entidad relacionada
+      //incluyendo el alias de la relación y los campos exactos que se quieren alcanzar
+      include: {
+        model: Cliente,
+        as: 'fk_propietario',
+        attributes: ['cli_nombre', 'cli_apellido']
+      }
+     });
     res.json(mascota);
   } catch (error) {
     res.status(500).json({ error: "Error al consultar mascotas.", exception: error });

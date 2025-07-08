@@ -1,18 +1,52 @@
 import { z } from "zod";
 
 /**
- * @ swagger
+ * @swagger
  * components:
  *   schemas:
  *     Proveedor:
  *       type: object
+ *       required:
+ *         - doc_tipo
+ *         - doc_numero
+ *         - prov_nombre
+ *         - contacto_nombre
+ *         - contacto_numero
  *       properties:
+ *         doc_tipo:
+ *           type: string
+ *           enum: [NIT, CC]
+ *           description: Tipo de documento del proveedor (NIT o CC)
+ *         doc_numero:
+ *           type: string
+ *           description: Número de documento del proveedor
+ *           example: "900123456"
+ *         prov_nombre:
+ *           type: string
+ *           description: Nombre del proveedor
+ *           example: "Proveedor ABC S.A.S"
+ *         banco_nombre:
+ *           type: string
+ *           description: Nombre del banco (opcional)
+ *           example: "Bancolombia"
+ *         banco_tipo:
+ *           type: string
+ *           description: Tipo de cuenta bancaria (opcional)
+ *           example: "Ahorros"
+ *         banco_numero:
+ *           type: string
+ *           description: Número de cuenta bancaria (opcional)
+ *           example: "1234567890"
+ *         contacto_nombre:
+ *           type: string
+ *           description: Nombre de la persona de contacto
+ *           example: "Juan Pérez"
+ *         contacto_numero:
+ *           type: string
+ *           description: Número de contacto (celular o teléfono)
+ *           example: "3101234567"
  */
 export const proveedorSchema = z.object({
-    /*doc_tipo: z.string({
-        required_error: 'El tipo de documento es obligatorio.',
-        invalid_type_error: 'El tipo de documento debe ser tipo texto.',
-    }),*/
 
     doc_tipo: z.enum(["NIT","CC"]),
 

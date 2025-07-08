@@ -9,7 +9,7 @@ class Cliente extends Model {
     public cli_apellido!: string;
     public num_contacto1!: string;
     public num_contacto2!: string;
-    public id_ciudad!: number;
+    public id_ciudad!: string;
     public direccion1!: string;
     public direccion2!: string;
     public observaciones!: string;
@@ -45,7 +45,7 @@ Cliente.init({
         type: DataTypes.STRING,
     },
     id_ciudad: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         /*references: {
             model: "",

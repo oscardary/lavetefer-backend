@@ -57,6 +57,19 @@ export const productoSchema = z.object({
 
 export type ProductoSchema = z.infer<typeof productoSchema>;
 
+/**
+ * @swagger
+ * parameters:
+ *   ProductoIdParam:
+ *     in: path
+ *     name: id
+ *     required: true
+ *     schema:
+ *       type: string
+ *       pattern: '^\d+$'
+ *     description: ID numérico del producto
+ *     example: "123"
+ */
 export const productoIdSchema = z.object({
     id: z.string().regex(/^\d+$/, { message: 'El ID debe ser un numero.' })
 });

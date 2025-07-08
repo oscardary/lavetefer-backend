@@ -4,13 +4,15 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn src/index.ts",
-    "debug": "npx ts-node-dev --respawn --transpile-only --inspect=9229 ./src/index.ts"
+    "debug": "npx ts-node-dev --respawn --transpile-only --inspect=9229 ./src/index.ts",
+    "seed": "ts-node src/data/seed.ts"
   },
   "keywords": [],
   "author": "@oscardary",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@faker-js/faker": "^9.9.0",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.1",
     "@types/node": "^22.14.0",
